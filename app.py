@@ -57,7 +57,7 @@ def db_inserting():
 @app.route('/db_select')
 def db_select():
     try:
-         with psycopg.connect(DB_URL) as conn:
+        with psycopg.connect(DB_URL) as conn:
             with conn.cursor() as cur:
                 #querry all
                 cur.execute("SELECT * FROM Basketball;")
