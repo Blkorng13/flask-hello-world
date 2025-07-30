@@ -85,6 +85,16 @@ def db_select():
     except Exception as e:
         return f"Select error: {e}", 500
         
+@app.route('/db_drop')
+def db_dropping():
+    try:
+        with psycopg.connect(DB_URL) as conn:
+            with conn.cursor() as cur:
+                #querry all
+                cur.execute(''' 
+                    DROP TABLE Basketball;
+                    ''')
 
-
-
+        return f"Basketball table deleted"
+    except Exception as e:
+        return f"Drop error: {e}", 500
