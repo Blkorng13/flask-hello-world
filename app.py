@@ -69,7 +69,7 @@ def db_select():
         response = "<table border = '1'>"
 
         #header tr=table row th=table header
-        response += 1 "<tr>"
+        response += "<tr>"
         for col in column_names:
             response += f"<th>{col}</th>"
         response += "</tr>"
