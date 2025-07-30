@@ -35,3 +35,21 @@ def db_create():
     except Exception as e:
         return f"DB error: {e}", 500
 
+
+@app.route('/db_insert')
+def db_inserting():
+    try:
+        with psycopg.connect(DB_URL) as conn:
+            with conn.cursor() as cur:
+                cur.execute('''
+                    INSERT INTO Basketball (First, Second, City, Name, Number)
+                    Values
+                    ('Jayson', 'Tatum', 'Boston', 'Celtics', 0),
+                    ('Stephen', 'Curry', 'San Francisco', 'Warriors', 30),
+                    ('Nikola', 'Jokic', 'Denver', 'Nuggets', 15),
+                    ('Kawhi', 'Leonard', 'Los Angeles', 'Clippers', 2);
+                ''')
+
+        return "Insert successful"
+    except Exception as e:
+        return f"Insert error: {e}", 500
